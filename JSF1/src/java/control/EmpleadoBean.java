@@ -6,6 +6,10 @@ import modelo.Empleado;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.faces.application.FacesMessage;
+import javax.faces.component.UIComponent;
+import javax.faces.component.UIInput;
+import javax.faces.context.FacesContext;
 
 @ManagedBean
 public class EmpleadoBean {
@@ -18,6 +22,17 @@ public class EmpleadoBean {
 
     public void setEmp(Empleado emp) {
         this.emp = emp;
+    }
+    
+    public void LargoIdUsr(FacesContext contexto, UIComponent componente, Object valor) {
+        contexto = FacesContext.getCurrentInstance();
+        String cad = (String)valor;
+        
+        if (cad.length() < 3 || cad.length() > 10) {
+            ((UIInput)componente).setValid(false);
+            
+            contexto.addMessage(componente.getClientId(contexto), new FacesMessage("  Id de Usuario no válido - Imperativo"));
+        }
     }
 
     public String autenticar() {
