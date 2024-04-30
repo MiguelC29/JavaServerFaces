@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Tag Number</title>
+    </h:head>
+    <h:body>
+        <h:form>  
+            <h:outputLabel for="username">Usuario  </h:outputLabel>  
+            <h:inputText id="user-id" value="#{user.name}"/><br/>  
+            <h:outputLabel for="shirtPrice">Precio  </h:outputLabel>  
+            <!-- <h:inputText id="shirtPrice-id" value="#{user.shirtPrice}" autocomplete="off">  
+                <f:convertNumber currencySymbol="$" type="currency"/>
+            </h:inputText> -->
+            <h:inputText id="shirtPrice-id" value="#{user.shirtPrice}" autocomplete="off"/>
+            <br/>  
+            <h:commandButton action="responseTagNumber" value="Enviar"/>
+        </h:form> 
+    </h:body>
+</html>
+

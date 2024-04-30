@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>Personalizados</title>
+    </h:head>
+    <h:body>
+        <h1>Personalizados (Custom) - Interface Converter:</h1>
+        <h:form>
+            <h:panelGrid columns="1">
+                <h:inputText value="#{custom.objeto}" converter="customConverter" />
+                <h:panelGrid columns="2">
+                    <h:commandButton value="Ingresar" />
+                    <h:commandButton value="Volver" action="index"/>
+                </h:panelGrid>
+            </h:panelGrid>
+        </h:form>
+    </h:body>
+</html>
+

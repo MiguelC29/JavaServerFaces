@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>Convertidores</title>
+    </h:head>
+    <h:body>
+        <h1>Vamos a ver los tipos de convertidores en JSF</h1>
+        <h:form>
+            <h:panelGrid columns="3">
+                <h:commandButton value="Declarativos (Standard)" action="standard"/>
+                <h:commandButton value="Imperativos (Managed Bean - Named)" action="managedBean"/>
+                <h:commandButton value="Personalizados (Custom)" action="custom"/>
+                <h:commandButton value="Tag" action="tagConverter"/>
+                <h:commandButton value="Tag Date" action="tagConverterDate"/>
+                <h:commandButton value="Tag Number" action="tagConverterNumber"/>
+            </h:panelGrid>
+        </h:form>
+    </h:body>
+</html>

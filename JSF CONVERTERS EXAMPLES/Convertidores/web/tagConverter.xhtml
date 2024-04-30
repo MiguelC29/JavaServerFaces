@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Tag Example</title>
+    </h:head>
+    <h:body>
+        <h1>JSF f:converter Tag Example</h1>
+        <h:form>  
+            <h:outputLabel for="username">Usuario  </h:outputLabel>  
+            <h:inputText id="user-id" value="#{user.name}"/><br/>  
+            <h:outputLabel for="age">Ingrese su edad  </h:outputLabel>  
+            <h:inputText id="age-id" value="#{user.age}">  
+                <f:converter converterId="javax.faces.Integer" />  
+            </h:inputText><br/>
+            <h:commandButton action="responseTag" value="Enviar"/>
+        </h:form>  
+    </h:body>
+</html>
+
