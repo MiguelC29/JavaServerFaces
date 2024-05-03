@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>Conversiones JSF</title>
+    </h:head>
+    <h:body>
+        <center>
+            <h2 style="color: blue">Calcule su edad</h2>
+            <h:form>
+                <h:outputLabel value="Digite su nombre:  " />
+                <h:inputText id="txtNom" value="#{usuarioBean.nombre}" required="true" requiredMessage="  Debe digitar un nombre"/>
+                <h:message for="txtNom" style="color: red"/>
+                <br/><br/>
+                <h:outputLabel value="Fecha de Nacimiento:  " />
+                <h:inputText id="txtFN" value="#{usuarioBean.fechaNacimiento}" required="true" requiredMessage="  No ha especificado una fecha de nacimiento"/>
+                <h:message for="txtFN" style="color: red"/>
+                <br/><br/>
+                <h:commandButton value="Calcular Edad" action="calcular"/>
+            </h:form>
+        </center>
+    </h:body>
+</html>
+

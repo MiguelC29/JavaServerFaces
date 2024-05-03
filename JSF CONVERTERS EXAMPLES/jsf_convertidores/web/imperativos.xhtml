@@ -8,6 +8,10 @@
     <h:body>
         <h:form>
             <h:inputText value="#{personBean.persona}" converter="#{personBean.personConverter}" />
+            <br/>
+            <h:outputLabel value="Nombre: #{personBean.persona.nombre}" />
+            <br/>
+            <h:outputLabel value="Edad: #{personBean.persona.edad}" />
         </h:form>
     </h:body>
 </html>
