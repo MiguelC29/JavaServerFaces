@@ -3,8 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Aprendiz/Documents/NetBeansProjects/ConversionesJSF/web/index.xhtml</file>
-            <file>file:/C:/Users/Aprendiz/Documents/NetBeansProjects/ConversionesJSF/src/java/controlador/UsuarioBean.java</file>
+            <file>file:/C:/Users/Aprendiz/Documents/JavaServerFaces/ConversionesJSF/web/index.xhtml</file>
+            <file>file:/C:/Users/Aprendiz/Documents/JavaServerFaces/ConversionesJSF/src/java/controlador/UsuarioBean.java</file>
+            <file>file:/C:/Users/Aprendiz/Documents/JavaServerFaces/ConversionesJSF/src/java/controlador/ConvFecha.java</file>
+            <file>file:/C:/Users/Aprendiz/Documents/JavaServerFaces/ConversionesJSF/src/java/controlador/ConMayus.java</file>
         </group>
     </open-files>
 </project-private>

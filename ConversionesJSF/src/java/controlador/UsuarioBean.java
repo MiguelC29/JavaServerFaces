@@ -32,5 +32,7 @@ public class UsuarioBean {
         this.fechaNacimiento = fechaNacimiento;
     }
     
-    
+    public String calcularEdad() {
+        return "";
+    }
 }
