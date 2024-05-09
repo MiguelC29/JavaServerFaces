@@ -1,5 +1,7 @@
 package controlador;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import javax.faces.bean.ManagedBean;
 
@@ -33,6 +35,21 @@ public class UsuarioBean {
     }
     
     public String calcularEdad() {
-        return "";
+        int edad;
+        
+        Calendar hoy = Calendar.getInstance();
+        hoy.get(Calendar.DATE);
+        
+        Calendar fNacimiento = Calendar.getInstance();
+        fNacimiento.setTime(fechaNacimiento);
+        
+        edad = hoy.get(Calendar.YEAR) - fNacimiento.get(Calendar.YEAR);
+        
+        String patron = "dd 'de' MMMM 'de' yyyy";
+        SimpleDateFormat sdf = new SimpleDateFormat(patron);
+        
+        String fecha = sdf.format(fechaNacimiento);
+        
+        return nombre + " nacido el " + fecha + ", tiene " + edad + " años";
     }
 }
