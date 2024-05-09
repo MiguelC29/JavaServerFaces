@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>#{etiqueta.msj_title}</title>
+    </h:head>
+    <h:body>
+        <center>
+            <h:form>
+                <h2 style="color: green">#{etiqueta.msj_titulo}</h2>
+                
+                <h:outputLabel value="#{etiqueta.msj_idusr}" />
+                <h:inputText id="txtIdUsuario" required="true" requiredMessage="#{etiqueta.msj_validusr}"/>
+                <h:message for="txtIdUsuario" style="color: red; margin-left: 10px" />
+                
+                <br/><br/>
+                
+                <h:outputLabel value="#{etiqueta.msj_pass}" />
+                <h:inputSecret id="txtContrasena" required="true" requiredMessage="#{etiqueta.msj_valpass}"/>
+                <h:message for="txtContrasena" style="color: red; margin-left: 10px" />
+                
+                <br/><br/>
+                
+                <h:commandButton value="#{etiqueta.msj_aceptar}" style="margin-right: 20px;"/>
+                <h:commandButton value="#{etiqueta.msj_cancelar}" immediate="true"/>
+            </h:form>
+        </center>
+    </h:body>
+</html>
