@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>Mi Sitio Internacional DB</title>
+    </h:head>
+    <h:body>
+        <center>
+            <h1 style="color: blue">Bienvenido a mi Sitio Internacional</h1>
+            <h:form>
+                <h:outputLabel value="ID Usuario: " />
+                <h:inputText id="txtIdU" required="true" requiredMessage="Debe digitar el id de Usuario" style="margin-right: 10px"/>
+                <h:message for="txtIdU" style="color: red"/>
+                
+                <br/> <br/>
+                <h:outputLabel value="Contraseña: " />
+                <h:inputSecret id="txtPassU" required="true" requiredMessage="Debe digitar la contraseña" style="margin-right: 10px"/>
+                <h:message for="txtPassU" style="color: red"/>
+                
+                <br/> <br/>
+                
+                <h:commandButton value="Aceptar" style="margin-right: 10px"/>
+                <h:commandButton value="Cancelar" immediate="true"/>
+            </h:form>
+        </center>
+    </h:body>
+</html>
