@@ -12,6 +12,10 @@ import java.util.ListResourceBundle;
 import java.util.Map;
 
 public class DBMensajes extends ListResourceBundle{
+    
+    public String getCurrentLocale() {
+        return "es";
+    }
 
     @Override
     protected Object[][] getContents() {
@@ -19,7 +23,7 @@ public class DBMensajes extends ListResourceBundle{
         Map<String, String> bundle = new HashMap<>();
         Object[][] mensajes = new Object[0][0];
         
-        String sql = "SELECT * FROM idiomas WHERE codid = 'es'";
+        String sql = "SELECT * FROM idiomas WHERE codid = '" + getCurrentLocale() + "'";
         
         try {
             ps = conectar().prepareStatement(sql);
