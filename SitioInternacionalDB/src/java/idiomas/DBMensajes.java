@@ -23,7 +23,7 @@ public class DBMensajes extends ListResourceBundle{
         
         try {
             ps = conectar().prepareStatement(sql);
-            ResultSet rs= ps.executeQuery();
+            ResultSet rs = ps.executeQuery();
             
             while (rs.next()) {                
                 bundle.put(rs.getString("etiqueta"), rs.getString("content"));
@@ -59,5 +59,4 @@ public class DBMensajes extends ListResourceBundle{
         
         return conn;
     }
-    
 }
