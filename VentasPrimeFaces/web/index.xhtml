@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Ventas Prime Faces</title>
+    </h:head>
+    <h:body>
+        <f:event type="preRenderView" listener="#{personaBean.listar()}" />
+        <center>
+            <h:form>
+                <h2 style="color: blue"><p:outputLabel value="CRUD Personas"/></h2>                
+                
+                <p:dataTable id="datos" value="#{personaBean.listPersonas}"
+                             var="infop" emptyMessage="No se encuentran registros">
+                    <p:column headerText="Código">
+                        <p:outputLabel value="#{infop.codigo}"/>
+                    </p:column>
+                    
+                    <p:column headerText="Nombre">
+                        <p:outputLabel value="#{infop.nombre}"/>
+                    </p:column>
+                    
+                    <p:column headerText="Sexo">
+                        <p:outputLabel value="#{infop.sexo}"/>
+                    </p:column>
+                    
+                    <p:column headerText="Acciones">
+                        <p:button value="Editar" styleClass="rounded-button" />
+                        <p:button value="Eliminar" styleClass="rounded-button" />
+                    </p:column>
+                </p:dataTable>
+            </h:form>
+        </center>
+    </h:body>
+</html>
