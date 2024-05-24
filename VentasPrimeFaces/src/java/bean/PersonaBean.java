@@ -4,8 +4,10 @@ import java.util.List;
 import javax.faces.bean.ManagedBean;
 import modelo.Persona;
 import dao.PersonaDAO;
+import javax.faces.bean.ViewScoped;
 
 @ManagedBean
+@ViewScoped
 public class PersonaBean {
     private Persona persona = new Persona();
     private List<Persona> listPersonas;
@@ -16,6 +18,20 @@ public class PersonaBean {
         listPersonas = pDAO.listar();
     }
     
+    public String guardar() {
+        pDAO = new PersonaDAO();
+        pDAO.guardar(persona);
+        listar();
+        
+        return "index";
+    }
+    
+    public String editar(int codigoP) {
+        pDAO = new PersonaDAO();
+        persona = pDAO.buscarPorId(codigoP);
+        
+        return "editarPersona";
+    }
     
     public Persona getPersona() {
         return persona;

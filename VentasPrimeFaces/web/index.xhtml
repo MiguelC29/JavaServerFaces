@@ -12,7 +12,8 @@
         <center>
             <h:form>
                 <h2 style="color: blue"><p:outputLabel value="CRUD Personas"/></h2>                
-                
+                <div style="text-align: left"><p:commandButton value="Nueva" styleClass="rounded-button" style="background-color: blue; color: white;" action="nuevaPersona"/></div>
+                <br/>
                 <p:dataTable id="datos" value="#{personaBean.listPersonas}"
                              var="infop" emptyMessage="No se encuentran registros">
                     <p:column headerText="Código">
@@ -27,9 +28,9 @@
                         <p:outputLabel value="#{infop.sexo}"/>
                     </p:column>
                     
-                    <p:column headerText="Acciones">
-                        <p:button value="Editar" styleClass="rounded-button" />
-                        <p:button value="Eliminar" styleClass="rounded-button" />
+                    <p:column headerText="Acciones" style="text-align: center">
+                        <p:commandButton value="Editar" action="#{personaBean.editar(infop.codigo)}" styleClass="rounded-button" style="background-color: green; color: white"/>
+                        <p:commandButton value="Eliminar" styleClass="rounded-button" style="background-color: red; color: white" />
                     </p:column>
                 </p:dataTable>
             </h:form>

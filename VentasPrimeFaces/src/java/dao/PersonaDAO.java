@@ -42,4 +42,39 @@ public class PersonaDAO extends DAO {
         
         return listaPer;
     }
+    
+    public void guardar(Persona persona) {
+        if (persona != null) {
+            try {
+                conectar();
+            
+                PreparedStatement ps = this.conn.prepareStatement("INSERT INTO persona(nombre, sexo) VALUES(?, ?);");
+                ps.setString(1, persona.getNombre());
+                ps.setString(2, persona.getSexo());
+                
+                ps.executeUpdate();
+            } catch (SQLException e) {
+            }
+        }
+    }
+    
+    public Persona buscarPorId(int codigo) {
+        Persona persona = null;
+        try {
+            conectar();
+            PreparedStatement ps = this.conn.prepareStatement("SELECT * FROM WHERE codigo=?;");
+            ps.setInt(1, codigo);
+            ResultSet rs = ps.executeQuery();
+            
+            if (rs.next()) {
+                persona = new Persona();
+                //persona.setCodigo(rs.getInt("codigo"));
+                persona.setNombre(rs.getString("nombre"));
+                persona.setSexo(rs.getString("sexo"));
+            }
+            
+        } catch (SQLException e) {
+        }
+        return persona;
+    }
 }
