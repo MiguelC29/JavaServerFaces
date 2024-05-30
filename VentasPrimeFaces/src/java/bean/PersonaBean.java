@@ -11,6 +11,7 @@ import javax.faces.bean.ApplicationScoped;
 public class PersonaBean {
     private Persona persona = new Persona();
     private List<Persona> listPersonas;
+    private List<Persona> listPersonasFiltro;
     private PersonaDAO pDAO;
 
     public void listar() {
@@ -22,25 +23,29 @@ public class PersonaBean {
         pDAO = new PersonaDAO();
         pDAO.guardar(persona);
         listar();
-        
+        limpiar();
         return "index";
     }
     
     public String editar(int codigoP) {
         pDAO = new PersonaDAO();
         persona = pDAO.buscarPorId(codigoP);
-        
         return "editarPersona";
     }
     
     public void actualizar() {
         pDAO = new PersonaDAO();
         pDAO.actualizar(persona);
+        limpiar();
     }
      
     public void eliminar(int codigo) {
         pDAO = new PersonaDAO();
         pDAO.eliminar(codigo);
+    }
+    
+    public void limpiar() {
+        persona = new Persona();
     }
     
     public Persona getPersona() {
@@ -57,5 +62,13 @@ public class PersonaBean {
 
     public void setListPersonas(List<Persona> listPersonas) {
         this.listPersonas = listPersonas;
+    }
+
+    public List<Persona> getListPersonasFiltro() {
+        return listPersonasFiltro;
+    }
+
+    public void setListPersonasFiltro(List<Persona> listPersonasFiltro) {
+        this.listPersonasFiltro = listPersonasFiltro;
     }
 }
