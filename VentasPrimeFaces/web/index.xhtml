@@ -30,7 +30,8 @@
                     
                     <p:column headerText="Acciones" style="text-align: center">
                         <p:commandButton value="Editar" action="#{personaBean.editar(infop.codigo)}" styleClass="rounded-button" style="background-color: green; color: white"/>
-                        <p:commandButton value="Eliminar" styleClass="rounded-button" style="background-color: red; color: white" />
+                        <p:commandButton value="Eliminar" actionListener="#{personaBean.eliminar(infop.codigo)}" styleClass="rounded-button" style="background-color: red; color: white" 
+                                         update="datos" onclick="return confirm('¿Está seguro/a de eliminar esta persona?')"/>
                     </p:column>
                 </p:dataTable>
             </h:form>

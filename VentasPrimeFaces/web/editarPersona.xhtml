@@ -12,7 +12,7 @@
             <h3 style="color: green;"><p:outputLabel value="Editar Personas"/></h3>
             <h:form>
                 <h:panelGrid columns="3">
-                    <p:inputText id="txtCodPersona" value="#{personaBean.persona.codigo}" style="display: none"/>
+                    <h:inputHidden id="txtCodPersona" value="#{personaBean.persona.codigo}" />
                     
                     <p:outputLabel value="Nombre"/>
                     <p:inputText id="txtNombre" value="#{personaBean.persona.nombre}" required="true" requiredMessage="Falta el nombre" />
@@ -27,7 +27,8 @@
                 </h:panelGrid>
 
                 <br/>
-                <p:commandButton value="Guardar" action="#{personaBean.editar(codigoP)}" ajax="false" styleClass="rounded-button" style="background-color: green; color: white"/>
+                <p:commandButton value="Actualizar" actionListener="#{personaBean.actualizar()}" action="index" styleClass="rounded-button" style="background-color: green; color: white"/>
+                <p:commandButton value="Cancelar" action="index" ajax="false" styleClass="rounded-button" style="background-color: green; color: white"/>
             </h:form>
         </center>
     </h:body>

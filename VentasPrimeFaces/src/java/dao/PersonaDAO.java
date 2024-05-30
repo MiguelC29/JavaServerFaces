@@ -33,7 +33,6 @@ public class PersonaDAO extends DAO {
                 }
                 
                 listaPer.add(p);
-                
             }
             
         } catch (SQLException e) {
@@ -62,13 +61,13 @@ public class PersonaDAO extends DAO {
         Persona persona = null;
         try {
             conectar();
-            PreparedStatement ps = this.conn.prepareStatement("SELECT * FROM WHERE codigo=?;");
+            PreparedStatement ps = this.conn.prepareStatement("SELECT * FROM persona WHERE codigo=?;");
             ps.setInt(1, codigo);
             ResultSet rs = ps.executeQuery();
             
             if (rs.next()) {
                 persona = new Persona();
-                //persona.setCodigo(rs.getInt("codigo"));
+                persona.setCodigo(rs.getInt("codigo"));
                 persona.setNombre(rs.getString("nombre"));
                 persona.setSexo(rs.getString("sexo"));
             }
@@ -76,5 +75,32 @@ public class PersonaDAO extends DAO {
         } catch (SQLException e) {
         }
         return persona;
+    }
+    
+    public void actualizar(Persona persona) {
+        try {
+            conectar();
+            
+            PreparedStatement ps = this.conn.prepareStatement("UPDATE persona SET nombre=?, sexo=? WHERE codigo=?;");
+            ps.setString(1, persona.getNombre());
+            ps.setString(2, persona.getSexo());
+            ps.setInt(3, persona.getCodigo());
+            
+            ps.executeUpdate();
+        } catch (SQLException e) {
+        }
+    }
+    
+    public void eliminar(int codigo) {
+        try {
+            conectar();
+            
+            PreparedStatement ps = this.conn.prepareStatement("DELETE FROM persona WHERE codigo=?");
+            ps.setInt(1, codigo);
+            
+            ps.executeUpdate();
+            
+        } catch (SQLException e) {
+        }
     }
 }
