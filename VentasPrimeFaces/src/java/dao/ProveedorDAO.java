@@ -18,7 +18,7 @@ public class ProveedorDAO extends DAO {
         try {
             conectar();
             
-            ps = conn.prepareStatement("SELECT * FROM proveedor;");
+            ps = this.conn.prepareStatement("SELECT * FROM proveedor;");
             rs = ps.executeQuery();
             
             while (rs.next()) {
@@ -28,7 +28,7 @@ public class ProveedorDAO extends DAO {
                 proveedor.setNombre(rs.getString("nombre"));
                 proveedor.setDireccion(rs.getString("direccion"));
                 proveedor.setTelefono(rs.getString("telefono"));
-                proveedor.setPaginaWeb(rs.getString("pagina_web"));
+                proveedor.setPaginaWeb(rs.getString("paginaWeb"));
                 
                 listProveedores.add(proveedor);
             }
