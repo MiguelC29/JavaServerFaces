@@ -2,44 +2,19 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p="http://primefaces.org/ui"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:p="http://primefaces.org/ui">
     <h:head>
         <title>Ventas Prime Faces</title>
     </h:head>
     <h:body>
-        <f:event type="preRenderView" listener="#{personaBean.listar()}" />
-        <center>
-            <h:form>
-                <h2 style="color: blue"><p:outputLabel value="CRUD Personas"/></h2>                
-                <div style="text-align: left"><p:commandButton value="Nueva" styleClass="rounded-button" style="background-color: blue; color: white;" action="nuevaPersona"/></div>
-                <br/>
-                <p:dataTable id="datos" value="#{personaBean.listPersonas}" widgetVar="personaTable"
-                             var="infop" emptyMessage="No se encuentran registros" rows="10" paginator="true" paginatorPosition="bottom" 
-                             paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}" 
-                             currentPageReportTemplate="{startRecord}-{endRecord} de {totalRecords} registros" rowsPerPageTemplate="5,10,{ShowAll|'Todos'}">
-                    
-                    <!--<!-- falta implementar filtros -->
-
-                    <p:column headerText="Código" >
-                        <p:outputLabel value="#{infop.codigo}"/>
-                    </p:column>
-
-                    <p:column headerText="Nombre">
-                        <p:outputLabel value="#{infop.nombre}"/>
-                    </p:column>
-
-                    <p:column headerText="Sexo">
-                        <p:outputLabel value="#{infop.sexo}"/>
-                    </p:column>
-
-                    <p:column headerText="Acciones" style="text-align: center">
-                        <p:commandButton value="Editar" action="#{personaBean.editar(infop.codigo)}" styleClass="rounded-button" style="background-color: green; color: white"/>
-                        <p:commandButton value="Eliminar" actionListener="#{personaBean.eliminar(infop.codigo)}" styleClass="rounded-button" style="background-color: red; color: white" 
-                                         update="datos" onclick="return confirm('¿Está seguro/a de eliminar esta persona?')"/>
-                    </p:column>
-                </p:dataTable>
-            </h:form>
-        </center>
+        <h:form>
+            <center>
+                <h1 style="color: blue;">Ventas PrimeFaces</h1>
+                <p:menubar>
+                    <p:menuitem action="persona/index" value="Persona" />
+                    <p:menuitem action="proveedor/index" value="Proveedor" />
+                </p:menubar>
+            </center>
+        </h:form>
     </h:body>
 </html>
