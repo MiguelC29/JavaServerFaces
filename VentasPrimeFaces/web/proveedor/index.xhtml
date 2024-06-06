@@ -10,12 +10,19 @@
     <h:body>
         <f:event type="preRenderView" listener="#{proveedorBean.listar()}"/>
         <p:growl id="msj" showDetail="true" showSummary="true" />
+        
         <center>
             <h2 style="color: blue;"><p:outputLabel value="CRUD Proveedores"/></h2>
             <h:form id="frmprovs">
-                <div style="text-align: left"><p:commandButton value="Nuevo Proveedor" style="background-color: blue; color: white;" oncomplete="PF('wadprv').show()"/></div>
+                <div style="text-align: left">
+                    <p:commandButton value="Nuevo Proveedor" style="background-color: blue; color: white;" 
+                                     actionListener="#{proveedorBean.setAccion('Nuevo')}"
+                                     oncomplete="PF('wadprv').show()" update=":adprv" />
+                </div>
                 <br/>
-                <p:dataTable id="datos" value="#{proveedorBean.listProveedores}" var="prov" emptyMessage="No hay proveedores registrados en la base de datos">
+                <p:dataTable id="datos" value="#{proveedorBean.listProveedores}" var="prov" 
+                             emptyMessage="No hay proveedores registrados en la Base de Datos">
+                    
                     <p:column headerText="NIT">
                         <p:outputLabel value="#{prov.nit}"/>
                     </p:column>
@@ -37,19 +44,43 @@
                     </p:column>
                     
                     <p:column headerText="Acciones" style="text-align: center">
-                        <p:commandButton value="Editar" style="background-color: green; color: white"/>
-                        <p:commandButton value="Eliminar" style="background-color: red; color: white" 
-                                         update="datos" onclick="return confirm('¿Está seguro/a de eliminar este proveedor?')"/>
+                        <p:commandButton value="Editar" actionListener="#{proveedorBean.buscar(prov)}"
+                                         oncomplete="PF('wadprv').show()" update=":adprv" style="background-color: green; color: white; margin-right: 10px;"/>
+                        <p:commandButton value="Eliminar" actionListener="#{proveedorBean.eliminar(prov)}" 
+                                         style="background-color: red; color: white" 
+                                         update="datos, msj" onclick="return confirm('¿Está seguro/a de eliminar el proveedor?');"/>
                     </p:column>
                 </p:dataTable>
+                <p:commandButton value="Regresar" action="/index" style="background-color: orangered; color: white; margin-top: 10px;"/>
             </h:form>
-            <p:commandButton value="Regresar" action="/index" style="background-color: green; color: white; margin-top: 10px;"/>
         </center>
         
-        <p:dialog id="adprv" width="450" header="Crear Proveedor" widgetVar="wadprv">
-            <h:form>
-                <h2>Crear Proveedor</h2>
-            </h:form>
+        <p:dialog id="adprv" width="450" header="#{proveedorBean.accion} Proveedor" widgetVar="wadprv">
+            <center>
+                <h:form>
+                    <h:panelGrid columns="2" style="margin-top: 15px">
+                        <p:outputLabel value="NIT" />
+                        <p:inputText value="#{proveedorBean.proveedor.nit}" required="true" requiredMessage="No ha diligenciado el NIT" />
+                        
+                        <p:outputLabel value="Nombre" />
+                        <p:inputText value="#{proveedorBean.proveedor.nombre}" required="true" requiredMessage="No ha diligenciado el Nombre" />
+                        
+                        <p:outputLabel value="Dirección" />
+                        <p:inputText value="#{proveedorBean.proveedor.direccion}" required="true" requiredMessage="No ha diligenciado la Dirección" />
+                        
+                        <p:outputLabel value="Teléfono" />
+                        <p:inputText value="#{proveedorBean.proveedor.telefono}" required="true" requiredMessage="No ha diligenciado el Teléfono" />
+                        
+                        <p:outputLabel value="Página Web" />
+                        <p:inputText value="#{proveedorBean.proveedor.paginaWeb}" required="true" requiredMessage="No ha diligenciado la Página Web" />
+                    </h:panelGrid>
+                    
+                    <p:commandButton value="#{proveedorBean.btnAccion}" actionListener="#{proveedorBean.operar()}"
+                                     update="frmprovs, msj" oncomplete="PF('wadprv').hide();"
+                                     style="background-color: green; color: white; margin-right: 20px; margin-top: 15px"/>
+                    <p:commandButton value="Cancelar" oncomplete="PF('wadprv').hide();" style="background-color: red; color: white"/>
+                </h:form>
+            </center>
         </p:dialog>
     </h:body>
 </html>

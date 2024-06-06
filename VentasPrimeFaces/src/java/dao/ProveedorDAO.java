@@ -57,7 +57,7 @@ public class ProveedorDAO extends DAO {
         }
     }
     
-    public void actualizar(Proveedor proveedor) {
+    public void actualizar(Proveedor proveedor) throws SQLException {
         try {
             conectar();
             
@@ -72,10 +72,11 @@ public class ProveedorDAO extends DAO {
             ps.executeUpdate();
             
         } catch (SQLException e) {
+            throw new SQLException("Error actualizando Proveedor");
         }
     }
     
-    public void eliminar(Proveedor proveedor) {
+    public void eliminar(Proveedor proveedor) throws SQLException {
         try {
             conectar();
             
@@ -86,6 +87,7 @@ public class ProveedorDAO extends DAO {
             ps.executeUpdate();
             
         } catch (SQLException e) {
+            throw new SQLException("Error eliminando Proveedor");
         }
     }
     
@@ -106,9 +108,8 @@ public class ProveedorDAO extends DAO {
                 proveedor.setNombre(rs.getString("nombre"));
                 proveedor.setDireccion(rs.getString("direccion"));
                 proveedor.setTelefono(rs.getString("telefono"));
-                proveedor.setPaginaWeb(rs.getString("pagina_web"));
+                proveedor.setPaginaWeb(rs.getString("paginaWeb"));
             }
-            
         } catch (SQLException e) {
         }
         
