@@ -15,6 +15,8 @@ public class ProductoDAO extends DAO {
         List<Producto> listaProductos = new ArrayList<>();
         
         try {
+            conectar();
+            
             ps = this.conn.prepareCall("SELECT * FROM producto;");
             
             rs = ps.executeQuery();

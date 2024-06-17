@@ -8,6 +8,7 @@
         <title>Ventas PrimeFaces</title>
     </h:head>
     <h:body>
+        <f:event type="preRenderView" listener="#{productoBean.listar()}"/>
         <f:event type="preRenderView" listener="#{proveedorBean.listar()}"/>
         <p:growl id="msj" showDetail="true" showSummary="true" />
         
@@ -15,8 +16,8 @@
             <h2 style="color: blue;"><p:outputLabel value="CRUD Productos"/></h2>
             <form id="frmproduds">
                 <div style="text-align: left">
-                    <p:commandButton value="Nuevo" style="background-color: blue; color: white;" 
-                                     action="nuevoProducto" />
+                    <p:commandButton value="Nuevo" style="background-color: blue; color: white;"
+                                     onclick="PF('wadpro').show()" update=":addProd"/>
                 </div>
                 <br/>
                 <p:dataTable id="prods" value="#{productoBean.listaProductos}" var="prod" emptyMessage="No hay productos registrados en la Base de Datos">
@@ -46,13 +47,51 @@
                     </p:column>
                     
                     <p:column headerText="Acciones" style="text-align: center">
-                        <p:commandButton value="Editar" style="background-color: green; color: white"/>
+                        <p:commandButton value="Editar" oncomplete="PF('wadpro').show()" update=":addProd" style="background-color: green; color: white"/>
                         <p:commandButton value="Eliminar" style="background-color: red; color: white" 
-                                         update="prods" onclick="return confirm('¿Está seguro/a de eliminar esta persona?')"/>
+                                         update="prods, msj" onclick="return confirm('¿Está seguro/a de eliminar esta persona?')"/>
                     </p:column>
-                    
                 </p:dataTable>
+                <p:commandButton value="Regresar" action="/index" style="background-color: orangered; color: white; margin-top: 10px;"/>
             </form>
         </center>
+        
+        <p:dialog id="addProd" widgetVar="wadpro" header="Crear Producto">
+            <center>
+                <h:form enctype="multipart/form-data">
+                    <h:panelGrid columns="3" style="margin-top: 15px">
+                        <!--<p:outputLabel value="Código" for="codProd"/>
+                        <p:inputText id="codProd" value="#{productoBean.producto.codigo}" required="true" requiredMessage="No ha diligenciado el Código del Producto" />
+                        <h:message for="codProd" style="color: red"/>-->
+                        
+                        <p:outputLabel value="Nombre" for="nameProd"/>
+                        <p:inputText id="nameProd" value="#{productoBean.producto.nombre}" required="true" requiredMessage="No ha diligenciado el Nombre" />
+                        <h:message for="nameProd" style="color: red"/>
+
+                        <p:outputLabel value="Proveedor" for="selProvP" />
+                        <p:selectOneMenu id="selProvP" value="#{productoBean.producto.nitProveedor}" required="true" requiredMessage="No ha seleccionado un proveedor">
+                            <f:selectItem itemLabel="Seleccionar Proveedor"  itemValue=""/>
+                            <f:selectItems value="#{proveedorBean.listProveedores}" var="pd" itemLabel="#{pd.nombre}" itemValue="${pd.nit}"/>
+                        </p:selectOneMenu>
+                        <h:message for="selProvP" style="color: red"/>
+
+                        <p:outputLabel value="Precio" for="precioP" />
+                        <p:inputNumber id="precioP" value="#{productoBean.producto.precio}" required="true" requiredMessage="No ha diligenciado el precio" />
+                        <h:message for="precioP" style="color: red"/>
+
+                        <p:outputLabel value="Stock" for="stockProd" />
+                        <p:inputNumber id="stockProd" value="#{productoBean.producto.stock}" required="true" requiredMessage="No ha diligenciado las existencias del producto" />
+                        <h:message  for="stockProd" style="color: red"/>
+
+                        <p:outputLabel value="Imagen" for="imgProd" />
+                        <h:inputFile id="imgProd" value="#{productoBean.producto.imagen}" required="true" requiredMessage="No ha seleccionado una imagen" />
+                        <h:message  for="imgProd" style="color: red"/>
+                    </h:panelGrid>
+
+                    <p:commandButton value="Guardar" actionListener="#{productoBean.guardar()}" update="prods, msj" oncomplete="PF('wadpro').hide();" style="background-color: green; color: white; margin-right: 20px; margin-top: 15px"/>
+                    <p:commandButton value="Cancelar" oncomplete="PF('wadpro').hide();" style="background-color: red; color: white"/>
+                </h:form>
+            </center>
+        </p:dialog>
     </h:body>
 </html>
